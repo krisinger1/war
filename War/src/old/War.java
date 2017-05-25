@@ -1,4 +1,4 @@
-package org.risinger;
+package old;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -21,43 +21,46 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import org.risinger.Card;
+import org.risinger.Suit;
+
 class SpritePanel extends JPanel{
-	CardImage cardImage=new CardImage(270,130); 
+	CardImage cardImage=new CardImage(270,130);
 	CardImage cardImage2=new CardImage(270,330);
 	//int imgX,imgY;
 	int frame = 0;
 	int frame2 = 1;
 
 	SpritePanel(){
-//		cardImage =  
+//		cardImage =
 //		imgX=x;
 //		imgY=y;
 		addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
             	frame++;
                changeCard(frame);
-               
+
             }
         });
 	}
-	
+
 	public void changeCard(int frame){
 		cardImage.setFrame(frame);
-		repaint(imgX,imgY,73,98);
+//		repaint(imgX,imgY,73,98);
 		//repaint(cardImage.x,cardImage.y,cardImage.width,cardImage.height);
 
 	}
-	
+
 	public void paintComponent(Graphics g) {
-        super.paintComponent(g);       
+        super.paintComponent(g);
         cardImage.paintCardImage(g);
-    }  
+    }
 }
 
 class CardImage implements ImageObserver{
 	int x,y,width,height,columns,frame;
 	Image source;
-	
+
 	public CardImage(int x, int y){
 		try {
 	          this.source = ImageIO.read(new File("sprites.png"));
@@ -71,11 +74,11 @@ class CardImage implements ImageObserver{
 		this.height=98;
 		frame=0;
 	}
-	
+
 	public void setFrame(int frame){
 		this.frame=frame;
 	}
-	
+
 	public void paintCardImage(Graphics g){
 		int frameX = (frame % columns) * width;
 		int frameY = (frame / columns) * height;
@@ -91,14 +94,14 @@ class CardImage implements ImageObserver{
 
 public class War implements ActionListener, ImageObserver{
 	JPanel panel;
-	SpritePanel drawPanel = new SpritePanel(270,130);
-	SpritePanel drawPanel2 = new SpritePanel(270,330);
+//	SpritePanel drawPanel = new SpritePanel(270,130);
+//	SpritePanel drawPanel2 = new SpritePanel(270,330);
 
 	Graphics g;
 	Color bg=new Color(200,225,255);
 	Rectangle p1cardBounds= new Rectangle(270,130,73,98);
 	Rectangle p2cardBounds= new Rectangle(270,330,73,98);
-	
+
 //	public static Image loadSprite(String file) {
 //
 //        Image sprite = null;
@@ -111,7 +114,7 @@ public class War implements ActionListener, ImageObserver{
 //
 //        return sprite;
 //    }
-//	
+//
 	public War(){
 		JFrame frame = new JFrame("War");
 		//frame.setLayout(null);
@@ -122,25 +125,25 @@ public class War implements ActionListener, ImageObserver{
 		//panel.setBounds(0, 0, 600, 600);
 		//frame.getContentPane().add(panel);
 		//panel.setLayout(null);
-		
+
 		initialize();
-				
+
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		//frame.add(board);
 		frame.setVisible(true);
-		drawPanel.setOpaque(false);
-		drawPanel2.setOpaque(false);
+//		drawPanel.setOpaque(false);
+//		drawPanel2.setOpaque(false);
 
 		//drawPanel.setBounds(270,130,73,98);
 		//drawPanel2.setBounds(270,330,73,98);
 		//drawPanel.setLayout(null);
-		frame.getContentPane().add(drawPanel);
-		frame.getContentPane().add(drawPanel2);
+//		frame.getContentPane().add(drawPanel);
+//		frame.getContentPane().add(drawPanel2);
 
 
 	}
-	
+
 	public void initialize(){
 		Card aclubs=new Card(Suit.CLUBS,1);
 		aclubs.setImage("aclubs.png");
@@ -148,21 +151,21 @@ public class War implements ActionListener, ImageObserver{
 		//panel.add(card1);
 		card1.setBounds(p1cardBounds);
 		aclubs.displayCard(card1);
-		drawPanel.changeCard(aclubs);
+		//drawPanel.changeCard(aclubs);
 		Card twoclubs=new Card(Suit.CLUBS,2);
-		drawPanel2.changeCard(twoclubs);
-		
+		//drawPanel2.changeCard(twoclubs);
+
 		JLabel card2 = new JLabel();
 		card2.setBounds(p2cardBounds);
 		card2.setIcon(new ImageIcon("aclubs.png"));
 		//panel.add(card2);
 		//panel.setVisible(true);
-		
+
 		JButton stack1 = new JButton(new ImageIcon("blue-back.png"));
 		stack1.setBounds(270,30,73,98);
 		stack1.addActionListener(this);
 		//panel.add(stack1);
-		
+
 	}
 
 	public void displayCard(Card c, Rectangle r){
@@ -170,11 +173,11 @@ public class War implements ActionListener, ImageObserver{
 //		card1.setBounds(r);
 //		card1.setIcon(new ImageIcon(c.getImage()));
 //		panel.add(card1);
-		
+
 	}
-	
-	
-	
+
+
+
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable(){
 			public void run(){
@@ -188,7 +191,7 @@ public class War implements ActionListener, ImageObserver{
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		JOptionPane.showMessageDialog(null, "you clicked the button");
-		drawPanel.repaint();
+		//drawPanel.repaint();
 	}
 
 	@Override
