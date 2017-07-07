@@ -1,4 +1,4 @@
-package org.risinger;
+package org.risinger.gui;
 
 import javax.swing.SwingUtilities;
 

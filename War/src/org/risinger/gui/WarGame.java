@@ -1,4 +1,4 @@
-package org.risinger;
+package org.risinger.gui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -16,6 +16,8 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import org.risinger.GameRunner;
 
 import com.sun.media.jfxmedia.events.PlayerEvent;
 
